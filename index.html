@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a658a7b479.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/logo.png" />
+    <title>Algorithm Visualization</title>
+</head>
+
+<body>
+    <nav>
+        <div class='logo'><a href='index.html'>Algo<span>Visualization</span></a></div>
+
+        <label for='btn' class='icon'>
+            <span class='fa fa-bars'></span>
+        </label>
+        <input type='checkbox' id='btn' style="display: none;">
+        <ul>
+            <li><a href='./Components/searching.html'>Searching</a></li>
+            <li><a href='./Components/sort.html'>Sorting</a></li>
+            <li><a href='./Components/tree.html'>Tree</a></li>
+            <li><a href='./Components/LinkedList.html'>Linked List</a></li>
+            <li><a href='./Components/pathfinding.html'>Pathfinding</a></li>
+            <li><a href="#" id="logout">Logout</a></li>
+        </ul>
+    </nav>
+    <br>
+    <h1 class="container"><i class="fas fa-graduation-cap"></i> Explore Awesome Algorithms!</h1>
+
+    <div class="card-deck">
+        <script>
+            let cards = [
+                {
+                    title: "Searching Algorithms",
+                    link: "./Components/searching.html",
+                    image: "./img/avl.gif",
+                    alt: "Searching image"
+                },
+                {
+                    title: "Sorting Algorithms",
+                    link: "./Components/sort.html",
+                    image: "./img/sort2.gif",
+                    alt: "Sorting image"
+                },
+                {
+                    title: "Tree Algorithms",
+                    link: "./Components/tree.html",
+                    image: "./img/tree.gif",
+                    alt: "Tree image"
+                },
+                {
+                    title: "Linked List Algorithms",
+                    link: "./Components/LinkedList.html",
+                    image: "./img/list.gif",
+                    alt: "Linked List image"
+                },
+                {
+                    title: "Pathfinding Algorithms",
+                    link: "./Components/pathfinding.html",
+                    image: "./img/pathfinding.gif",
+                    alt: "Pathfinding image"
+                }
+            ];
+
+            for (let i = 0; i < cards.length; i++) {
+                const card = cards[i];
+                const cardTemplate = `
+                    <div class="card">
+                        <a href="${card.link}"><img class="card-image" src="${card.image}" alt="${card.alt}"></a>
+                        <div class="container">
+                            <div class="card-title">
+                                <h2>${card.title}</h2>
+                            </div>
+                            <div class="card-buttons">
+                                <button class="btn-danger"><a href="${card.link}">Visualize</a></button>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                `;
+                document.querySelector(".card-deck").innerHTML += cardTemplate;
+            }
+        </script>
+    </div>
+    <br>
+    <br>
+
+    <script>
+        // Check if the user is logged in
+        document.addEventListener('DOMContentLoaded', function () {
+            const isLoggedIn = localStorage.getItem('loggedIn'); // Check login status from localStorage
+            const logoutButton = document.getElementById('logout');
+
+            if (isLoggedIn === 'true') {
+                // If the user is logged in, show the Logout button
+                logoutButton.textContent = 'Logout';
+            } else {
+                // If not logged in, show the Login button
+                logoutButton.textContent = 'Login';
+            }
+        });
+
+        // Handle logout click
+        document.getElementById('logout').addEventListener('click', function (e) {
+            e.preventDefault();
+
+            // Check if it's a login or logout action
+            const isLoggedIn = localStorage.getItem('loggedIn');
+            
+            if (isLoggedIn === 'true') {
+                // Remove the logged-in status and update the button text
+                localStorage.removeItem('loggedIn');
+                document.getElementById('logout').textContent = 'Login';
+            } else {
+                // Redirect to the login page if the user clicks Login
+                window.location.href = '/login.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

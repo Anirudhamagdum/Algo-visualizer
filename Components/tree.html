@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5">
+    <link rel="shortcut icon" href="#">
+    <link rel="icon" href="../img/logo.png" />
+    <link rel="stylesheet" href="../CSS/tree.css">
+    <title>Binary Tree</title>
+
+
+    <script>
+        // Check if the user is logged in
+        document.addEventListener('DOMContentLoaded', function () {
+            const isLoggedIn = localStorage.getItem('loggedIn');
+
+            if (isLoggedIn !== 'true') {
+                // If not logged in, redirect to the login page
+                window.location.href = '/login.html';
+            }
+        });
+    </script>
+    
+</head>
+
+<body>
+    <div class="container">
+        <nav style="width: 100%;">    
+            <div class="logo">
+                <a href="../index.html" style="color: aliceblue;">Algo<span style="color: aqua;">Visualization</span></a>
+            </div>
+        </nav>
+    
+        <h1>Binary Tree Visualization</h1>
+        <div class="findContainer"></div>
+        <textarea oninput="action()" type="number" placeholder='Enter an array which separated with space. The root is first element. Ex: 5 9 1 3 7' id="inp" cols="30" rows="10"></textarea>
+        <div class="btn-container">
+            <button class="btn-clear" onclick="clearAndCreate()">Clear</button>
+            <button class="btn" disabled onclick="toggleLock()">Lock</button>
+        </div>
+
+        <div class="box graph" id="tree"></div>
+
+    </div>
+
+    
+
+</body>
+<script src="../js/tree/index.js"></script>
+<script src="../js/tree/binaryTree.js"></script>
+<script src="../js/tree/draw.js"></script>
+<script src="../js/tree/d3js.js"></script>
+
+</html>
